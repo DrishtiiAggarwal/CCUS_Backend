@@ -14,7 +14,7 @@ const poolConfig = {
     port: parseInt(DB_PORT, 10), // Convert DB_PORT to a number
     database: DB_DATABASE,
     ssl: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false // Disable SSL verification
     }
 };
 const pool = new pg_1.Pool(poolConfig);

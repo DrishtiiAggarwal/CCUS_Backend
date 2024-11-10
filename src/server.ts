@@ -37,7 +37,7 @@ server.listen(port, () => {
 });
 
 // Define type for the request
-app.get("/addData", upload.single('file'), (req: Request, res: Response) => {
+app.post("/addData", upload.single('file'), (req: Request, res: Response) => {
   addData(req, res);
 });
-app.use("/", userRouter);
+app.use("/api", userRouter);

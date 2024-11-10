@@ -8,19 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addData = void 0;
-const db_1 = __importDefault(require("../db"));
+exports.fetchData = exports.addData = void 0;
+const userService_1 = require("../services/userService");
 const addData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const client = yield db_1.default.connect();
-        console.log("Connected to the database");
-        client.release();
-        console.log("Admin login request received");
-        res.send("Admin logged in");
+        const data = req.body.data;
+        const result = yield (0, userService_1.addDataService)(data);
+        res.status(200).send(result);
     }
     catch (error) {
         console.error("Database connection error:", error);
@@ -28,3 +23,14 @@ const addData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.addData = addData;
+const fetchData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield (0, userService_1.fetchDataService)();
+        res.status(200).send(result);
+    }
+    catch (error) {
+        console.error("Database connection error:", error);
+        res.status(500).send("Error connecting to the database");
+    }
+});
+exports.fetchData = fetchData;

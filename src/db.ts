@@ -17,13 +17,17 @@ const {
   DB_DATABASE: string;
 };
 
+
+
 const poolConfig: PoolConfig = {
   user: DB_USER,
   password: DB_PASSWORD,
   host: DB_HOST,
   port: parseInt(DB_PORT, 10), // Convert DB_PORT to a number
   database: DB_DATABASE,
-  ssl: false,
+  ssl: {
+    rejectUnauthorized: false // Disable SSL verification
+  }
 };
 
 const pool = new Pool(poolConfig);
