@@ -34,7 +34,7 @@ server.listen(port, () => {
     console.log(`Server is running on port: http://localhost:${port}`);
 });
 // Define type for the request
-app.get("/addData", exports.upload.single('file'), (req, res) => {
+app.post("/addData", exports.upload.single('file'), (req, res) => {
     (0, userController_1.addData)(req, res);
 });
-app.use("/", userRoutes_1.default);
+app.use("/api", userRoutes_1.default);
