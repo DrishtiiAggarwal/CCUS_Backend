@@ -36,6 +36,9 @@ server.listen(port, () => {
   console.log(`Server is running on port: http://localhost:${port}`);
 });
 
+app.get("/", function sendSlash(req:Request,res:Response){
+  res.status(200).send("On hai website");
+})
 // Define type for the request
 app.post("/addData", upload.single('file'), (req: Request, res: Response) => {
   addData(req, res);

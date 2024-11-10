@@ -33,6 +33,9 @@ const server = http_1.default.createServer(app);
 server.listen(port, () => {
     console.log(`Server is running on port: http://localhost:${port}`);
 });
+app.get("/", function sendSlash(req, res) {
+    res.status(200).send("On hai website");
+});
 // Define type for the request
 app.post("/addData", exports.upload.single('file'), (req, res) => {
     (0, userController_1.addData)(req, res);
