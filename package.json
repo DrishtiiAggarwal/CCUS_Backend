@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"nodemon dist/server.js\"",
+    "start":"node dist/server.js",
     "build": "tsc"
   },
   "keywords": [],
